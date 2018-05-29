@@ -1,0 +1,14 @@
+var jwt = require('jsonwebtoken');
+console.log(jwt);
+var obj="abcd123456dagdg";
+jwt.sign(obj,"13148687691",function(err,result){
+  console.log(err);
+  console.log(result)
+  jwt.verify(result, "131486876491", function(err, decoded) {
+    if (err) {
+        console.log("failure")
+    } else {
+      console.log(decoded);
+    }
+  });
+})
