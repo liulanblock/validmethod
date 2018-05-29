@@ -1,0 +1,27 @@
+web3.personal.sign(web3.toHex(pass),web3.eth.coinbase,function(err,resp){
+			if(err){
+				document.cookie=null;
+			}else{
+				axios.post('/api/admin/recoversign',{"passscre":resp,"address":web3.eth.coinbase}).then(function(response){
+					toastr.success("SIGN SUCCESS!");
+					$("#myModalsign").click();
+				})
+			}
+		});
+    
+    web3.personal.ecRecover(sessionidak,passscre.trim(),function(err,response){
+      console.log("err:",err);
+      console.log("response address:",response);
+      console.log("address:"+address)
+      if(response==address.trim()){
+        let sessionkey=address+"sessionid";
+        client.set(sessionkey,sessionid.trim(),function(errse,resultse){
+          if(resultse=="OK"){
+            return res.send({'resp':sessionidpas});
+          }
+
+        })
+      }else{
+        return res.send({'resp':null});
+      }
+    })
